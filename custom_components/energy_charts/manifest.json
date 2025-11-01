@@ -1,0 +1,15 @@
+{
+  "domain": "energy_charts",
+  "name": "Energy-Charts",
+  "codeowners": ["@philipprau"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/philipprau/homeassistant-energy-charts",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/philipprau/homeassistant-energy-charts/issues",
+  "requirements": [
+    "pydantic>=2.0.0,<3.0.0"
+  ],
+  "version": "1.0.0",
+  "integration_type": "hub"
+}

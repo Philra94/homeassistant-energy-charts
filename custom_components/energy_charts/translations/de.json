@@ -1,0 +1,59 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Energy-Charts Integration einrichten",
+        "description": "Konfiguriere den Zugriff auf die Energy-Charts API",
+        "data": {
+          "country": "Land",
+          "update_interval": "Update-Intervall (Minuten)"
+        }
+      },
+      "sensors": {
+        "title": "Sensor-Auswahl",
+        "description": "Wähle welche Sensoren erstellt werden sollen",
+        "data": {
+          "enable_individual_sources": "Einzelne Energiequellen",
+          "enable_aggregated": "Aggregierte Sensoren",
+          "enable_categories": "Kategorie-Sensoren",
+          "enable_forecasts": "Prognose-Sensoren"
+        }
+      },
+      "advanced": {
+        "title": "Erweiterte Optionen",
+        "description": "Optionale Einstellungen",
+        "data": {
+          "historical_data_range": "Historische Daten",
+          "language": "Sprache"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur API fehlgeschlagen",
+      "invalid_country": "Ungültiger Ländercode",
+      "timeout": "API-Timeout",
+      "unknown": "Unbekannter Fehler",
+      "no_sensors_selected": "Mindestens ein Sensor-Typ muss ausgewählt werden"
+    },
+    "abort": {
+      "already_configured": "Diese Integration ist bereits für dieses Land konfiguriert"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Energy-Charts Optionen",
+        "description": "Aktualisiere die Einstellungen",
+        "data": {
+          "update_interval": "Update-Intervall (Minuten)",
+          "enable_individual_sources": "Einzelne Energiequellen",
+          "enable_aggregated": "Aggregierte Sensoren",
+          "enable_categories": "Kategorie-Sensoren",
+          "enable_forecasts": "Prognose-Sensoren",
+          "historical_data_range": "Historische Daten",
+          "language": "Sprache"
+        }
+      }
+    }
+  }
+}
