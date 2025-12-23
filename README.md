@@ -26,7 +26,7 @@ A custom Home Assistant integration for monitoring real-time energy production d
 2. Click on "Integrations"
 3. Click the three dots in the top right corner
 4. Select "Custom repositories"
-5. Add this repository URL: `https://github.com/philipprau/homeassistant-energy-charts`
+5. Add this repository URL: `https://github.com/Philra94/homeassistant-energy-charts`
 6. Select category "Integration"
 7. Click "Add"
 8. Search for "Energy-Charts" in HACS
