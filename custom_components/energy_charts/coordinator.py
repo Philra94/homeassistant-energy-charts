@@ -176,8 +176,8 @@ class EnergyChartsDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         """
         aggregated: dict[str, float] = {}
 
-        # Total production (sum of all positive values)
-        total_production = 0.0
+        # Total production (sum of renewable + fossil + nuclear only)
+        # Excludes storage discharge and trade/import values
         total_renewable = 0.0
         total_fossil = 0.0
         total_nuclear = 0.0
@@ -187,18 +187,19 @@ class EnergyChartsDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             if value is None:
                 continue
 
-            # Only count positive values for production
-            if value > 0:
-                total_production += value
-
             category = source_data.get("category")
 
+            # Only count production sources (renewable, fossil, nuclear)
+            # Exclude storage and trade categories
             if category == CATEGORY_RENEWABLE:
                 total_renewable += value
             elif category == CATEGORY_FOSSIL:
                 total_fossil += value
             elif category == CATEGORY_NUCLEAR:
                 total_nuclear += value
+
+        # Total production is the sum of all production categories
+        total_production = total_renewable + total_fossil + total_nuclear
 
         aggregated[SENSOR_TOTAL_PRODUCTION] = round(total_production, 2)
         aggregated[SENSOR_TOTAL_RENEWABLE] = round(total_renewable, 2)
