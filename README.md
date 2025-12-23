@@ -143,22 +143,24 @@ attributes:
 
 ### Energy Production Card (ApexCharts)
 
+> **Note:** This example requires the [ApexCharts Card](https://github.com/RomRider/apexcharts-card) custom card to be installed.
+
 ```yaml
 type: custom:apexcharts-card
 header:
   title: Energy Production Germany
   show: true
 series:
-  - entity: sensor.energy_charts_de_solar_total
+  - entity: sensor.energy_charts_germany_solar_total
     name: Solar
     color: yellow
-  - entity: sensor.energy_charts_de_wind_total
+  - entity: sensor.energy_charts_germany_wind_total
     name: Wind
     color: blue
-  - entity: sensor.energy_charts_de_fossil_total
+  - entity: sensor.energy_charts_germany_fossil_total
     name: Fossil
     color: gray
-  - entity: sensor.energy_charts_de_nuclear_production
+  - entity: sensor.energy_charts_germany_nuclear_production
     name: Nuclear
     color: red
 ```
@@ -167,7 +169,7 @@ series:
 
 ```yaml
 type: gauge
-entity: sensor.energy_charts_de_renewable_share
+entity: sensor.energy_charts_germany_renewable_share
 name: Renewable Energy
 unit: "%"
 min: 0
@@ -184,15 +186,15 @@ severity:
 type: entities
 title: Energy Overview
 entities:
-  - entity: sensor.energy_charts_de_total_production
+  - entity: sensor.energy_charts_germany_total_production
     name: Total Production
-  - entity: sensor.energy_charts_de_renewable_production
+  - entity: sensor.energy_charts_germany_renewable_production
     name: Renewables
-  - entity: sensor.energy_charts_de_renewable_share
+  - entity: sensor.energy_charts_germany_renewable_share
     name: Renewable Share
-  - entity: sensor.energy_charts_de_fossil_production
+  - entity: sensor.energy_charts_germany_fossil_production
     name: Fossil Fuels
-  - entity: sensor.energy_charts_de_nuclear_production
+  - entity: sensor.energy_charts_germany_nuclear_production
     name: Nuclear
 ```
 
@@ -205,13 +207,13 @@ automation:
   - alias: "Energy: High Renewable Share Alert"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.energy_charts_de_renewable_share
+        entity_id: sensor.energy_charts_germany_renewable_share
         above: 80
     action:
       - service: notify.mobile_app
         data:
           title: "Green Energy Alert"
-          message: "Currently {{ states('sensor.energy_charts_de_renewable_share') }}% renewable energy!"
+          message: "Currently {{ states('sensor.energy_charts_germany_renewable_share') }}% renewable energy!"
 ```
 
 ### Start Devices During High Solar Production
@@ -221,7 +223,7 @@ automation:
   - alias: "Energy: Start Dishwasher on High Solar"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.energy_charts_de_solar_total
+        entity_id: sensor.energy_charts_germany_solar_total
         above: 30000  # 30 GW
     condition:
       - condition: time
@@ -239,7 +241,7 @@ automation:
   - alias: "Energy: Low Fossil Production Logger"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.energy_charts_de_fossil_total
+        entity_id: sensor.energy_charts_germany_fossil_total
         below: 10000  # 10 GW
         for:
           hours: 1
